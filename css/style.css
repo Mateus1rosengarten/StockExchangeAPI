@@ -1,0 +1,23 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+span{
+    
+font-family: 'Open Sans' sans-serif;
+font-style: normal;
+font-weight: 200;
+font-size: 60px;
+line-height: 79px;
+padding: 10px; }
+
+#xelement{
+    font-weight: 400;
+}
+
+#yelement{
+    font-weight: 400;
+}
+
