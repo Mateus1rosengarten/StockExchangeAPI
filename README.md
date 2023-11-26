@@ -14,6 +14,7 @@ Company Details: Access detailed information about specific companies.
 **JavaScript (OOP)**: Implementation of object-oriented programming principles for organized and efficient code.<br>
 
 
-🚧 # # # Work in Progress - Not Yet Ready for Production Use**
+🚧 
+# # # Work in Progress - Not Yet Ready for Production Use
 
 This project is currently under active development, and certain features may be incomplete or subject to change. Contributions, bug reports, and feedback are welcome.
