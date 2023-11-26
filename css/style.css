@@ -1,23 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-span{
+
+
+
+.custom-input{
+    width: 50vw !important;
+    height: 6vh;
+    margin-left: 19vw !important;
+}
+
+.custom-h2{
+    font-family: 'Roboto', sans-serif;
+    font-size: 500%;
+    position: absolute;
+    top: 10vh;
+    left: 15vw;
+    white-space: nowrap;
     
-font-family: 'Open Sans' sans-serif;
-font-style: normal;
-font-weight: 200;
-font-size: 60px;
-line-height: 79px;
-padding: 10px; }
-
-#xelement{
-    font-weight: 400;
 }
 
-#yelement{
-    font-weight: 400;
+.ulstyle{
+    position: absolute;
+    top: 200px;
 }
 
+.liststyle{
+    list-style: none;
+    margin-left: 80px;
+    margin-top: 20px;
+
+
+}
+.parstyle{
+   text-align: left;
+   margin-left: 25px;
+   margin-top: 10px;
+}
+.hrstyle{
+    
+    width: 83vw;
+    
+}
+
+.navbar:hover {
+    background-color:#F1F6F9 !important
+
+}
+
+.loader-custom{
+    position: absolute;
+    left: 70px;
+    display: none;
+}
+
+.imagecompanystyle{
+    height: 10vh;
+    width: 10vw;
+}
+.imagesize{
+    width: 5vw;
+    height: 5vh;
+    margin-right: 4vw;
+}
+
+.green-price{
+    color: green;
+   
+    
+}
+
+.red-price{
+    color:red;
+}
+#results{
+    position: absolute;
+    top: 40vh
+}
+#company-infos{
+    display: inline-block;
+    margin-right: 10vw;
+  }
+  #company-description{
+    margin-top: 35vh;
+    font-family: 'Roboto', sans-serif;
+    font-size: 125%;
+  }
+  #company-price{
+      position: absolute;
+      background-color: #fcf8e3;
+      
+      top: 25vh;
+      left: 30vw;
+    font-size: xx-large;}
+
+    #company-name{
+        font-family: 'Roboto', sans-serif;
+        position: absolute;
+        font-size: 300%;
+        font-weight: bold;
+        top: 15vh;
+        left: 30vw;
+
+    }
+
+    #company-changes{
+        position: absolute;
+        top: 25vh;
+        left: 90vh ;
+    }
+
+
+
+.marquee{
+    height: 25px;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    
+
+}
+.div1{
+    height: 10vh;
+    width: 80vw;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.div2{
+    height: 30vh;
+    width: 80vw;
+    margin-left: 40px;
+}
+.div3{
+    height: 50vh;
+    width: 80vw;
+    margin-left: 40px;
+}
+
+.namestyle{
+  margin-left: 40px;
+}
+.loader-custom-company{
+  position: absolute;
+  left: 70px;
+  top: 75px;
+}
+
+.big-description {
+    margin-top: 22vh !important;
+    margin-bottom: 30vh !important;
+    font-size:99% !important;
+
+
+}
+
+canvas{
+    margin-top: 100px;
+}
+
+.marquee div{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #f8f9fa;
+    display: block;
+    width: 200%;
+    height: 30px;
+position: absolute;
+overflow: hidden;
+animation: marquee 45s linear infinite; 
+}
+
+.marquee div:hover {
+    background-color: rgb(252, 248, 227);
+}
+
+
+
+
+.customdiv{
+    position: absolute;
+    
+    height: 900px;
+    width: 900px;
+}
+.pricecolor{
+    color: green;
+    margin-right: 10px;
+}
+
+.my-footer {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    bottom: 0;
+    height: 5vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-footer-text{
+    position: absolute;
+    text-align: center;
+     font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+@keyframes marquee{
+    0% { left: 0;}
+    100%{left: -100%;}
+}
