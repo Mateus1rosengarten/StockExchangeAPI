@@ -1,29 +1,33 @@
-const marqueeDiv = document.getElementById('marquee')
+const marqueeDiv = document.getElementById("marquee");
 
 class CreatingMarquee {
-  constructor(mydiv) {
-    this.mydiv = mydiv
+  constructor(marqueeResults) {
+    this.marqueeResults = marqueeResults;
   }
-  renderingDiv(apilink) {
-    let makefirstdiv = document.createElement('div');
-    makefirstdiv.classList.add('marquee');
-    const makeseconddiv = document.createElement('div')
-    makeseconddiv.classList.add('mymarquee');
-    makefirstdiv.appendChild(makeseconddiv);
-    this.mydiv.appendChild(makefirstdiv);
 
-    fetch(apilink)
+  renderingDiv() {
+    let containerMarqueeResults = document.createElement("div");
+    containerMarqueeResults.classList.add("marquee");
+    this.marqueeResults.appendChild(containerMarqueeResults);
+    this.fetchingMarqueeData(containerMarqueeResults);
+  }
+
+  fetchingMarqueeData(resultContainer) {
+    fetch("https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com//api/v3/quotes/nyse")
       .then((response) => response.json())
       .then((result) => {
-        console.log(result)
-        for (let i = 0; i < 100; i++) {
-          let object = result[i];
-          this.printingOnscreen(makeseconddiv, object)
-        }
-        })
+        console.log("marquee results:", result);
 
-      }
-      printingOnscreen(seconddiv, dataobject){
-        seconddiv.innerHTML += `<span>${dataobject.symbol}</span>` + `<span class ="pricecolor"> ${dataobject.price}</span>` + `   `
-      }
+        for (let i = 0; i < 500; i++) {
+          this.printingOnscreen(resultContainer, result[i]);
+        }
+      });
   }
+
+  printingOnscreen(resultContainer, data) {
+    resultContainer.innerHTML +=
+      `<span>${data.symbol}</span>` +
+      `<span class ="price-color"> <span class="dollar-signal">$</span>${data.price}</span>` +
+      `   `;
+  }
+}

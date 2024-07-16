@@ -7,20 +7,27 @@
     box-sizing: border-box;
 }
 
-
-
-.custom-input{
-    width: 50vw !important;
-    height: 6vh;
-    margin-left: 19vw !important;
+#marquee{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    
+  
 }
 
-.custom-h2{
+
+
+
+.search-input{
+    width: 60vw !important;
+    height: 6vh;
+    align-self: center;
+   
+}
+
+.h2-appName{
     font-family: 'Roboto', sans-serif;
     font-size: 500%;
-    position: absolute;
-    top: 10vh;
-    left: 15vw;
     white-space: nowrap;
     
 }
@@ -37,19 +44,20 @@
 
 
 }
-.parstyle{
+.div-eachCompany{
    text-align: left;
    margin-left: 25px;
    margin-top: 10px;
 }
-.hrstyle{
-    
-    width: 83vw;
+.hr-deviderCompanys{
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    width: 88vw;
     
 }
 
 .navbar:hover {
-    background-color:#F1F6F9 !important
+    background-color:rgb(252, 248, 227) !important
 
 }
 
@@ -59,28 +67,30 @@
     display: none;
 }
 
-.imagecompanystyle{
+.image-company{
     height: 10vh;
     width: 10vw;
 }
-.imagesize{
+.image-company{
     width: 5vw;
     height: 5vh;
     margin-right: 4vw;
 }
 
 .green-price{
-    color: green;
+    color: #28a745;
    
     
 }
 
 .red-price{
-    color:red;
+    color:#dc3545;
 }
 #results{
-    position: absolute;
-    top: 40vh
+    margin-bottom: 5vh;
+    margin-top: 8vh;
+    margin-left: 5vw;
+   
 }
 #company-infos{
     display: inline-block;
@@ -116,16 +126,6 @@
     }
 
 
-
-.marquee{
-    height: 25px;
-    width: 100%;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    
-
-}
 .div1{
     height: 10vh;
     width: 80vw;
@@ -164,32 +164,40 @@ canvas{
     margin-top: 100px;
 }
 
-.marquee div{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #f8f9fa;
-    display: block;
-    width: 200%;
-    height: 30px;
-position: absolute;
-overflow: hidden;
-animation: marquee 45s linear infinite; 
-}
-
-.marquee div:hover {
+.marquee{
+    font-family: Verdana,Tahoma, sans-serif;
     background-color: rgb(252, 248, 227);
-}
-
-
-
-
-.customdiv{
+    white-space: nowrap;
+    height: 3vh;
     position: absolute;
+    overflow: hidden;
+    animation: marquee 50s linear infinite; 
     
-    height: 900px;
-    width: 900px;
 }
-.pricecolor{
-    color: green;
+
+.dollar-signal{
+    font-size: large;
+}
+
+
+
+.div-appName{
+    text-align: center;
+    margin-top: 5vh;
+    width: 100vw;
+    height: 20vh;
+
+
+    
+}
+
+.image-duck{
+    width: 57vw;
+    height: 40vh;
+    
+}
+.price-color{
+    color: #28a745;
     margin-right: 10px;
 }
 
@@ -207,6 +215,16 @@ animation: marquee 45s linear infinite;
     position: absolute;
     text-align: center;
      font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+.btn-outline-success{
+    border-color : black;
+}
+
+.btn-outline-success:hover {
+    color: #28a745;
+    border-color : black;
+    background-color: rgb(252, 248, 227) !important;
 }
 
 @keyframes marquee{

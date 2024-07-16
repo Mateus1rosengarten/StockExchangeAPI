@@ -1,85 +1,117 @@
 
 const containerDOM = document.getElementById('container')
-const companyname = document.getElementById('company-name');
-const companyimage = document.getElementById('company-image');
-const companyprice = document.getElementById('company-price');
+const companyName = document.getElementById('company-name');
+const companyImage = document.getElementById('company-image');
+const companyPrice = document.getElementById('company-price');
 const companychanges = document.getElementById('company-changes');
-const companydescription = document.getElementById('company-description');
-const mainresult = document.getElementById('results');
+const companyDescription = document.getElementById('company-description');
+const containerResults = document.getElementById('results');
 const myLoader = document.getElementById('my-loader');
+const duckImage = document.getElementById('imageDuck')
+const nasdaqStocksText = document.getElementById('h2AppName')
+let resultSearch
+
 
 class CreatingResult {
-  constructor(myresult) {
-    this.myresult = myresult
-
+  constructor(resultDiv) {
+    this.resultDiv = resultDiv;
+   
+    console.log('resultSearch in Constructor',this.resultSearch)
+    
     document.addEventListener("search", (event) => {
-      const finalresult = event.detail.data
-      this.renderingResults(finalresult)
-    }
-    )
-  }
+      resultSearch = event.detail.data;
+      console.log('resultSearchArray:',resultSearch);
+      this.renderingResults(resultSearch);
+      this.CompanyDetails(resultSearch)
+    })
+    this.resultDiv = resultDiv;
+  };
 
-  renderingResults(objc) {
+  renderingResults(company) {
 
+    
+    let eachCompanyResult;
+    let makeHorizontalDivider;
+    this.styleResultsPage();
+    
 
-    let makepar
-    let makehr
-    for (let i in objc) {
-      makepar = document.createElement('p');
-      makepar.classList.add('parstyle');
-      makehr = document.createElement('hr');
-      makehr.classList.add('hrstyle');
+    for (let i in company) {
+      eachCompanyResult = document.createElement('p');
+      eachCompanyResult.classList.add('div-eachCompany');
+      makeHorizontalDivider = document.createElement('hr');
+      makeHorizontalDivider.classList.add('hr-deviderCompanys');
 
-      const term = document.getElementById('myinput').value
+      const term = document.getElementById('inputSearch').value;
+      const imgCompany = company[i].profile.image;
+      const symbCompany = company[i].symbol;
+      const nameCompany = company[i].profile.companyName;
+      const changesCompany = company[i].profile.changesPercentage;
+
       
-       if(objc[i].profile.changesPercentage > 0) {
-       makepar.innerHTML = `<img src=${objc[i].profile.image} class="imagesize">` + `<a href="./company.html?symbol=` + objc[i].symbol + '">'
-      + `${this.highli(objc[i].profile.companyName,term)} </a> ` + `(${this.highli(objc[i].symbol,term)})` + `<span class=green-price>` + `(${objc[i].profile.changesPercentage}%)` + `</span>` }
-      else {
-        makepar.innerHTML = `<img src=${objc[i].profile.image} class="imagesize">` + `<a href="./company.html?symbol=` + objc[i].symbol + '">'
-      + `${this.highli(objc[i].profile.companyName,term)} </a> ` + `(${this.highli(objc[i].symbol,term)})` + `<span class=red-price>` + `(${objc[i].profile.changesPercentage}%)` + `</span>` }
+       if(company[i].profile.changesPercentage >= 0) {
+
+        eachCompanyResult.innerHTML = `<img src=${imgCompany} id="imageCompany" class="image-company" onerror= "src='https://via.placeholder.com/300?text=NO+IMAGE+AVAIBLE&txtsize=40'">`
+         + `<a href="./company.html?symbol=` + symbCompany + 'a">' + `${this.makingSearchTermHighLigthed(nameCompany,term)} </a>`
+         +  `(${this.makingSearchTermHighLigthed(symbCompany,term)})` + ' '
+         + `<span class=green-price>` + `(${changesCompany}%)` + `</span>` }
+      t
+      
 
       } 
+
+      
     
       
     
 
-    this.myresult.appendChild(makepar);
-    this.myresult.appendChild(makehr);
+    this.resultDiv.appendChild(eachCompanyResult);
+    this.resultDiv.appendChild(makeHorizontalDivider);
   }
 
-  CompanyDetails() {
+  styleResultsPage() {
+    nasdaqStocksText.style.marginTop = '10vh'
+    containerResults.style.marginBottom = '15vh';
+    containerResults.style.marginTop = '15vh';
+    duckImage.style.display = 'none';
 
-    let myobject
+  }
+
+  
+
+  CompanyDetails(res) {
+
+ 
+
     const parameters = new URLSearchParams(location.search);
     const symbol = parameters.get('symbol')
-    const url = `https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com/api/v3/company/profile/${symbol}`
-    fetch(url)
-      .then((response) => response.json())
-      .then((result) => {
+    let companySelected = res.find(company => company.symbol === symbol);
 
-        myobject = result.profile
-        if (myobject.changes > 0) {
-          companychanges.style.color = "green";
-        }
-        else {
-          companychanges.style.color = "red";
-        }
+    console.log('restulSearchinMetod',companySelected)
+    
+    
+    // console.log('companySelected',companySelected);
+     // myobject = result.profile
+        // if (myobject.changes > 0) {
+        //   companychanges.style.color = "green";
+        // }
+        // else {
+        //   companychanges.style.color = "red";
+        // }
 
-        this.printingInfo(myobject)
-        this.getHistorieData()
-      })
+        // this.printingInfo(myobject)
+        // this.getHistorieData()
+      
 
 
   }
-  highli(original,termval){
 
-    let re = new RegExp(termval,"gi"); 
-    let newText = original.replace(re, `<mark>$&</mark>`);
+  makingSearchTermHighLigthed(originalText,term) {
+    let regex = new RegExp(term,"gi"); 
+    let newText = originalText.replace(regex, `<mark>$&</mark>`);
     return newText
-
   }
-
+  
+  
 
   creatingChart(key, value) {
     const ctx = document.getElementById('myChart');
@@ -123,14 +155,14 @@ class CreatingResult {
 
   printingInfo(myobjectData) {
     myLoader.style.display = 'none';
-    companyimage.innerHTML = `<img src=${myobjectData.image}>`
+    companyImage.innerHTML = `<img src=${myobjectData.image}>`
 
-    companyname.innerHTML = myobjectData.companyName
-    companyprice.innerHTML = `Stock price: $${myobjectData.price}`
-    companychanges.innerHTML = `(${myobjectData.changes}%)`
-    companydescription.innerHTML = myobjectData.description
+    companyName.innerHTML = myobjectData.companyName
+    companyPrice.innerHTML = `Stock price: $${myobjectData.price}`
+    companyChanges.innerHTML = `(${myobjectData.changes}%)`
+    companyDescription.innerHTML = myobjectData.description
     if(myobjectData.description.length > 700 ) {
-      companydescription.classList.add('big-description')
+      companyDescription.classList.add('big-description')
     }
 
   }
@@ -150,6 +182,8 @@ class CreatingResult {
       })
 
   }
+
+  
 
 }
 

@@ -18,9 +18,10 @@
    <div id="marquee"></div>
    <div id="form"></div>
   </div>
-  <div class="text-center ml-5 customdiv">
-   <h1 class="custom-h2 ml-5 display-4"> Search Nasdaq Stocks</h1>
+  <div class="div-appName">
+   <h1 class="h2-appName" id="h2AppName"> Search Nasdaq Stocks</h1>
    <div id="results"></div>
+   <img class="image-duck" id="imageDuck" src="./images/patinhas.jpeg"></img>
   </div>
   <footer class="my-footer bg-light"> <span class="my-footer-text">Mateus Rosengarten Mauricio . All rigths preserved</span></footer>
 
@@ -34,10 +35,11 @@
 <script>
   (async function(){
     const marquee = new CreatingMarquee(marqueeDiv);
-    marquee.renderingDiv(`https://stock-exchange-dot-full-stack-course-services.ew.r.appspot.com//api/v3/quotes/nyse`)
+    marquee.renderingDiv()
+    
     const form = new CreatingForm(mainform);
-    const results = new CreatingResult(mainresult);
-    form.renderingDiv((resultcompanies) =>{
+    const results = new CreatingResult(containerResults);
+    form.renderingSearchElements((resultcompanies) =>{
      results.renderingResults(resultcompanies)
     });
 
